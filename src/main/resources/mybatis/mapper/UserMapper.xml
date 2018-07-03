@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="UserMapper">
+	
+	<select id="findByUiId" parameterType="java.lang.String" resultType="user">
+		select
+			userId userId,
+			userName userName,
+			password password,
+			phone phone
+		from
+			t_user
+		where
+			userId = #{userId}
+	</select>
+	
+	<!-- 新增会员 -->
+	<insert id="saveU" parameterType="pd">
+		insert into t_user (
+			userName,
+			password,
+			phone 
+		) values (
+			#{USERNAME},
+			#{PASSWORD},
+			#{PHONE}
+		)
+	</insert>
+	
+	<delete id="deleteU" parameterType="pd">
+		delete from
+			t_user 
+		where 
+			userId = #{userId}
+	</delete>
+</mapper>
